@@ -1,9 +1,11 @@
 # Read Data into R Environment
-
+?iris
+iris
 #CSV Files----
 #Read from CSV file in PC
-write.csv(iris, "./data/iris.csv", row.names=F)
-read1 = read.csv(file="./data/iris.csv", header = TRUE,sep = ",")
+write.csv(iris, "./data/iris.csv", row.names=F) #rowname=f means no row names in csv
+read1 = read.csv(file="./data/iris.csv", header = TRUE,sep = ",")# header =T tells that the first row has titles
+read1 = read.csv(file="./data/Sim_Prob4_Soln.csv", header = TRUE,sep = ",")
 str(read1); class(read1)
 head(read1)
 read2 = read.table(file="./data/iris.csv", header = TRUE,sep = ",")
@@ -32,15 +34,18 @@ read_txt = read.table("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/
 head(read_txt)
 
 #Google Sheets-----
+install.packages('gsheet')
 library(gsheet)
 url_gsheet = "https://docs.google.com/spreadsheets/d/1QogGSuEab5SZyZIw1Q8h-0yrBNs1Z_eEBJG7oRESW5k/edit#gid=107865534"
-df_gsheet = as.data.frame(gsheet2tbl(url_gsheet))
+df_gsheet = as.data.frame(gsheet2tbl(url_gsheet))# gsheet2tbl is used for calling google sheets
 head(df_gsheet)
 
 #Excel----
 #Create a excel file with data in 2 sheets
 # first row contains variable names
+Sys.setenv(JAVA_HOME='C:\\Program File') # give location of java installation
 library(xlsx)
+library(rJava)
 df_excel1 = read.xlsx( "./data/myexcel.xlsx", 1)
 df_excel1
 # read in the worksheet named mysheet

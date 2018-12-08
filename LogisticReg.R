@@ -20,7 +20,10 @@ str(data)
 ## to make sure there are not 0 cells
 table(data$rank, data$admit)
 xtabs(~admit + rank, data = data)
-
+xtabs(~gear + cyl + am + vs, data = mtcars)
+xtabs(~gear, data = mtcars)
+xtabs(~gear + cyl, data = mtcars)
+xtabs(~gear + cyl + am, data = mtcars)
 #create Logistic Model
 mylogit <- glm(admit ~ gre + gpa + rank, data = data, family = "binomial")
 
@@ -77,3 +80,20 @@ prop.table(table(testData$admit))
 #same promotion of admit in test and train
 str(testData)
 #now construct a model with train and then test on testdata
+
+
+##Train&Test-----
+(mtcars)
+nrow(mtcars)
+#train 70 , test-30%
+sample(x=1:32,size=.7 * 32)
+index= sample(x=1:nrow(mtcars), size=.7 * nrow(mtcars),replace=F)
+index
+
+
+require(caTools)
+set.seed(101)
+sample = sample.split(mtcars$am, SplitRatio = .75)
+train = subset(mtcars, sample == TRUE)
+test = subset(mtcars,sample == FALSE)
+table(train$am);table(test$am)

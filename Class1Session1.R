@@ -2,6 +2,7 @@ Women
 women
 
 x6
+?set.seed
 set.seed(1234)
 (x6 = sample(1:50))
 sort(x6)
@@ -10,7 +11,7 @@ sort (x)
 x(2,3) <- 2;x
 x1 = x(1:2);x1
 
-(x = seq(1,5, lenght.out = 15))
+(x = seq(1,5,length.out = 15))
 ?distribution
 (x = rnorm(100000))
 
@@ -26,17 +27,18 @@ x= rnorm(100000)
 plot(density(x))
 plot(hist(x))
 plot(hist(x),freq = F)
-plot(hist(x),break =10)
-
+plot(hist(x), break = 10)
+?plot
+?rnorm
 x1= rnorm(100, 10,10)
 plot(x1)
 plot(density(x1))
 summary(x1)
 dev(x1)
 hist(x1)
-quantile(x1,seq(0.1,.09))
-
-#Matrix
+quantile(x1,seq(0,1,0.1))
+?quantile
+#Matrix----
 100:111
 length(100:111)
 matrix(1,ncol=3, nrow=4)
@@ -49,18 +51,20 @@ attributes(m1)
 dim(m1)
 m1
 
-# access elements of matrix
-m1[1,]; m1[,-1]
+# access elements of matrix-----
+m1[1,] 
+m1[,-1]
+
 #two commands at the same time
 m1[,1]
 m1[,1, drop=F] # printing column is coloumn format
-m1[c(1,3),]
+m1[c(1,2),]
 m1[-c(1,3),]
 m1[,-c(1,3), drop=F]
 
 m1[m1> 105 & m1 < 108]  #values above 105 and below 108
 
-#names of cols and rows
+#names of cols and rows-----
 paste("c","D",sep="-")
 paste("c",1:100,sep="-")
 (colnames(m1) = paste('C',1:3, sep=' ')) # assigining column name to each col
